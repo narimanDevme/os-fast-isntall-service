@@ -22,7 +22,7 @@ l_command15 = "chown root:root server"
 l_command16 = "cd"
 l_command17 = "cd /etc/"
 l_command18 = "rm -R vsftpd.conf"
-l_command20 = "git clone https://github.com/narimanDevme/vsftpd.conf.git"
+l_command19 = "git clone https://github.com/narimanDevme/vsftpd.conf.git"
 command2 = f"ping {host}"
 if system_info == "Linux":
     try:
@@ -51,8 +51,30 @@ if system_info == "Linux":
         print(result6)
         result7 = subprocess.run(l_command7.split(), check=True, text=True, input='dev2256N\n')
         print(result7)
-
-
+        result8 = subprocess.run(l_command8.split(), check=True, text=True, input='dev2256N\n')
+        print(result8)
+        result9 = subprocess.run(l_command9.split(), check=True, text=True, input='dev2256N\n')
+        print(result9)
+        result10 = subprocess.run(l_command10.split(), check=True, text=True, input='dev2256N\n')
+        print(result10)
+        result11 = subprocess.run(l_command11.split(), check=True, text=True, input='dev2256N\n')
+        print(result11)
+        result12 = subprocess.run(l_command12.split(), check=True, text=True, input='dev2256N\n')
+        print(result12)
+        result13 = subprocess.run(l_command13.split(), check=True, text=True, input='dev2256N\n')
+        print(result13)
+        result14 = subprocess.run(l_command14.split(), check=True, text=True, input='dev2256N\n')
+        print(result14)
+        result15 = subprocess.run(l_command15.split(), check=True, text=True, input='dev2256N\n')
+        print(result15)
+        result16 = subprocess.run(l_command16.split(), check=True, text=True, input='dev2256N\n')
+        print(result16)
+        result17 = subprocess.run(l_command17.split(), check=True, text=True, input='dev2256N\n')
+        print(result7)
+        result18 = subprocess.run(l_command18.split(), check=True, text=True, input='dev2256N\n')
+        print(result18)
+        result19 = subprocess.run(l_command19.split(), check=True, text=True, input='dev2256N\n')
+        print(result19)
         print("$$$$$$$ vsftpd finish $$$$$$$$")
         time.sleep(3)
 
