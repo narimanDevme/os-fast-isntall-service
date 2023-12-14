@@ -1,13 +1,25 @@
 import platform
 import subprocess
+import time
 host = "194.33.105.38"
 system_info = platform.system()
-command = "sudo apt-get update"
+
+l_command1 = "apt-get update\n"
+l_command2 = "curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh -y\nsh setup-repos.sh -y"
+l_command3 = "apt-get install webmin --install-recommends -y\n"
+
+
 command2 = f"ping {host}"
 if system_info == "linux":
     try:
-        result =  subprocess.run(['sudo', '-S'] + command.split(), check=True, text=True, input='dev2256N\n')
-        print(result.stdout)
+        result1 =  subprocess.run(['sudo', '-S'] + l_command1, check=True, text=True, input='dev2256N\n')
+        print(result1.stdout)
+        time.sleep(1)
+
+        result2 = subprocess.run(['sudo', '-S'] + l_command2, check=True, text=True, input='dev2256N\n')
+        print(result2)
+        result3 = subprocess.run(['sudo', '-S'] + l_command3, check=True, text=True, input='dev2256N\n')
+        print(result3)
     except subprocess.CalledProcessError as e:
         print(f"error : {e}")
 elif system_info == "Windows":
