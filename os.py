@@ -1,87 +1,72 @@
 import platform
 import subprocess
 import time
+import os
 host = "194.33.105.38"
-system_info = platform.system()
+system_info = os.uname()
+system_info = system_info.sysname
 
-l_command1 = "apt-get update\n"
-l_command2 = "curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh"
-l_command4 = "sh setup-repos.sh"
+l_command1 = "apt-get update -y\n"
+l_command2 = "curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh\nsh setup-repos.sh\n"
+#l_command4 = "sh setup-repos.sh"
 l_command3 = "apt-get install webmin --install-recommends -y\n"
 l_command5 = "apt-get install vsftpd -y"
 l_command6 = "systemctl start vsftpd"
 l_command7 = "systemctl enable vsftpd"
-l_command8 = "cd"
-l_command9 = "cd /home/"
-l_command10 = "mkdir ftp"
-l_command11 = "chown nobody:nogroup ftp"
-l_command12 = "chmod a-w ftp"
-l_command13 = "cd ftp"
-l_command14 = "mkdir server"
-l_command15 = "chown root:root server"
-l_command16 = "cd"
-l_command17 = "cd /etc/"
-l_command18 = "rm -R vsftpd.conf"
 l_command19 = "git clone https://github.com/narimanDevme/vsftpd.conf.git"
+l_command20 = "bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)"
+#l_command21 = "echo \"deb [signed-by=/etc/apt/keyrings/openvpn-as.gpg.key] http://as-repository.openvpn.net/as/debian $(lsb_release -cs) main\" | sudo tee /etc/apt/sources.list.d/openvpn-as.list"
+#l_command22 = "wget --quiet -O - https://as-repository.openvpn.net/as-repo-public.gpg | sudo tee /etc/apt/keyrings/openvpn-as.gpg.key"
+#l_command23 = "sudo apt install apt-transport-https ca-certificates"
+#l_command24 = "sudo apt update"
+#l_command25 = "sudo apt install -y openvpn-as"
+l_command26 = "apt-get install nmap -y"
+l_command25 = "wget http://download.configserver.com/csf.tgz"
+l_command26 = "tar -xzf csf.tgz"
+l_command27 = "ufw disable"
+l_command28 = "cd csf\nsh install.sh"
+l_command29 = "perl /usr/local/csf/bin/csftest.pl"
 command2 = f"ping {host}"
 if system_info == "Linux":
     try:
 
         # update
-        result1 =  subprocess.run(['sudo', '-S'] + l_command1.split(), check=True, text=True, input='dev2256N\n')
-        print(result1.stdout)
+        os.system(l_command1)
         print("$$$$$$$ update finish $$$$$$$$")
         time.sleep(3)
-
         #webmin
-        result2 = subprocess.run(l_command2.split(), check=True, text=True, input='dev2256N\n')
-        print(result2)
-        result4 = subprocess.run(l_command4.split(), check=True, text=True, input='dev2256N\n')
-        print(result4)
-        result3 = subprocess.run(l_command3.split(), check=True, text=True, input='dev2256N\n')
-        print(result3)
+        os.system(l_command2)
+        os.system(l_command3)
         print("$$$$$$$ webmin finish $$$$$$$$")
         time.sleep(3)
-
-
         #vsftpd
-        result5 = subprocess.run(l_command5.split(), check=True, text=True, input='dev2256N\n')
-        print(result5)
-        result6 = subprocess.run(l_command6.split(), check=True, text=True, input='dev2256N\n')
-        print(result6)
-        result7 = subprocess.run(l_command7.split(), check=True, text=True, input='dev2256N\n')
-        print(result7)
-        result8 = subprocess.run(l_command8.split(), check=True, text=True, input='dev2256N\n')
-        print(result8)
-        result9 = subprocess.run(l_command9.split(), check=True, text=True, input='dev2256N\n')
-        print(result9)
-        result10 = subprocess.run(l_command10.split(), check=True, text=True, input='dev2256N\n')
-        print(result10)
-        result11 = subprocess.run(l_command11.split(), check=True, text=True, input='dev2256N\n')
-        print(result11)
-        result12 = subprocess.run(l_command12.split(), check=True, text=True, input='dev2256N\n')
-        print(result12)
-        result13 = subprocess.run(l_command13.split(), check=True, text=True, input='dev2256N\n')
-        print(result13)
-        result14 = subprocess.run(l_command14.split(), check=True, text=True, input='dev2256N\n')
-        print(result14)
-        result15 = subprocess.run(l_command15.split(), check=True, text=True, input='dev2256N\n')
-        print(result15)
-        result16 = subprocess.run(l_command16.split(), check=True, text=True, input='dev2256N\n')
-        print(result16)
-        result17 = subprocess.run(l_command17.split(), check=True, text=True, input='dev2256N\n')
-        print(result7)
-        result18 = subprocess.run(l_command18.split(), check=True, text=True, input='dev2256N\n')
-        print(result18)
-        result19 = subprocess.run(l_command19.split(), check=True, text=True, input='dev2256N\n')
-        print(result19)
+        os.system(l_command5)
+        os.system(l_command6)
+        os.system(l_command7)
+        os.system(l_command19)
         print("$$$$$$$ vsftpd finish $$$$$$$$")
         time.sleep(3)
-
-
-
+        #xui
+        os.system(l_command20)
+        print("$$$$$$$ v2ray panel finish $$$$$$$$")
+        time.sleep(3)
+        #open vpn :
+        #os.system(l_command21)
+        #os.system(l_command22)
+        #os.system(l_command23)
+        #os.system(l_command24)
+        #os.system(l_command25)
+        #print("$$$$$$$ openvpn panel finish $$$$$$$$")
+        #time.sleep(3)
+        #csf 
+        os.system(l_command26)
+        os.system(l_command27)
+        os.system(l_command28)
+        os.system(l_command29)
+        print("$$$$$$$ csf finish $$$$$$$$")
+        time.sleep(3)
     except subprocess.CalledProcessError as e:
-        print(f"error : {e}")
+        print(" $$$$$$$$$$ $$$$$$$$$$ we have Error ! $$$$$$$$$$$$ $$$$$$$$$$")
 elif system_info == "Windows":
     try:
         result = subprocess.run(command2, capture_output=True, text=True, shell=True, check=True)
